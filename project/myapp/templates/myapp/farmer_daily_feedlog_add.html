@@ -1,0 +1,27 @@
+{% extends 'myapp/farmer_base.html' %}
+{% load static %}
+{% block title %}Feed Log Entry{%endblock%}
+{% block body %}
+<center>
+    <h1>Feed Log Entry</h1>
+    <div class="container">
+    <form name="frm" role="form" action="{% url 'farmer_daily_feedlog_add'%}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="feed_name">Feed Name:</label>
+            <input class="form-control" type="text" name="feed_name" id="feed_name" required>
+        </div>
+        <div class="form-group">
+            <label for="feed_quantity">Feed Quantity:</label>
+            <input class="form-control" type="text" name="feed_quantity" id="feed_quantity" required>
+        </div>
+        <input name="batch_id" value="{{batch_id}}" type="hidden">
+        <button type="submit"
+        class="btn btn-info" id="bt" name="bt">Add</button>
+        <button type="reset"
+        class="btn btn-info" id="rt" name="rt">Reset</button>
+    </form>
+    </div>
+    <h3>{{msg}}</h3>
+</center>
+{% endblock %}

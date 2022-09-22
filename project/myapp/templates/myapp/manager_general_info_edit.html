@@ -1,0 +1,31 @@
+{% extends 'myapp/manager_base.html' %}
+{% load static %}
+{% block title %}Edit General Info{%endblock%}
+{% block body %}
+<center>
+    <h1>Edit General Info</h1>
+    <div class="container">
+    <form name="frm" role="form" action="{% url 'manager_general_info_edit'%}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input class="form-control" type="text" name="title" id="title" value="{{gn.title}}">
+        </div>
+        <div class="form-group">
+            <label for="desc">Description</label>
+            <textarea class="form-control"  name="desc" id="desc" >{{gn.desc}}</textarea>
+        </div>
+        <input type="hidden" name="gn_id" value="{{gn_id}}">
+
+        <button type="submit"
+        class="btn btn-info" id="bt" name="bt">Update</button>
+        <button type="reset"
+        class="btn btn-info" id="rt" name="rt">Reset</button>
+    </form>
+    </div>
+    <h3>{{msg}}</h3>
+</center>
+<style>
+    .form-group{}
+</style>
+{% endblock %}

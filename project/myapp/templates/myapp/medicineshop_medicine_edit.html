@@ -1,0 +1,51 @@
+{% extends 'myapp/medicineshop_base.html' %}
+{% load static %}
+{% block title %}medicine  Update{% endblock %}
+{% block body %}
+<center>
+    <h2> Medicine Update </h2>
+	<div class="container">
+    <form role="form" name="frm" action="{% url 'medicineshop_medicine_edit' %}" method="post">
+        {% csrf_token %}
+		<input type="hidden" name="med_id" value="{{med_id}}">
+        <div class="form-group">
+            <label for="mname"> medicine Name</label>
+            <input class="form-control" type="text"  name="mname"
+                   value="{{m_obj.medicine_name}}" required="required" id="mname">
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="cname">company name</label>
+            <input class="form-control" type="text"  name="cname"
+                   value="{{m_obj.medicine_company}}" required="required" id="cname">
+        </div>
+        <div class="form-group">
+            <label for="bcode">Batch code</label>
+            <input class="form-control" type="text"  name="bcode"
+                   value="{{m_obj.batch_code}}" required="required" id="bcode">
+        </div>
+        <div class="form-group">
+            <label for="mdes">Medicine description</label>
+            <input class="form-control" type="text"  name="mdes"
+                   value="{{m_obj.medicine_description}}" required="required" id="mdes">
+        </div>
+        <div class="form-group">
+            <label for="stock">Stock</label>
+            <input class="form-control" type="text"  name="stock"
+                   value="{{m_obj.stock}}" required="required" id="stock">
+        </div>
+        <div class="form-group">
+            <label for="amt">Amount</label>
+            <input class="form-control" type="text"  name="amt"
+                   value="{{m_obj.amount}}" required="required" id="amt">
+        </div>
+		<br><br>
+		<button type="submit" class="btn btn-success" id="bt" name="bt">Update</button>
+        <button type="reset" class="btn btn-warning" id="rt" name="rt">Reset</button>
+    </form>
+	{{msg}}
+	</div>
+</center>
+{% endblock %}

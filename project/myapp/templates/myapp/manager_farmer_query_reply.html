@@ -1,0 +1,25 @@
+{% extends 'myapp/manager_base.html' %}
+{% load static %}
+{%block title%}Message Manager{%endblock%}
+{% block body %}
+<center>
+    <h1>Add Message</h1>
+    <div class="container">
+    <form name="frm" role="form" action="{% url 'manager_farmer_query_reply'%}" method="post">
+        {% csrf_token %}<br><br><br><br>
+        <div class="form-group">
+            <label for="reply">Reply</label>
+            <input class="form-control" type="text" name="reply" id="reply" required>
+        </div>
+
+        <input type="hidden" name="query_id" value="{{query_id}}">
+
+        <button type="submit"
+        class="btn btn-info" id="bt" name="bt">Add</button>
+        <button type="reset"
+        class="btn btn-info" id="rt" name="rt">Reset</button>
+    </form>
+    </div>
+    <h3>{{msg}}</h3>
+</center>
+{% endblock %}

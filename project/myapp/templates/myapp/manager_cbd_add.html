@@ -1,0 +1,48 @@
+{% extends 'myapp/manager_home.html' %}
+{% load static %}
+{% block title %}medicine Registration{% endblock %}
+{% block body %}
+<center>
+    <h2>New medicine Registration</h2>
+	<div class="container">
+    <form role="form" name="frm" action="{% url 'medicineshop_medicine_add' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+			<label for="mname">Name</label>
+	        <input class="form-control" type="text"  id="mname" name="mname" placeholder="Medicine name" required="required">
+		</div>
+
+
+
+	    <div class="form-group">
+			<label for="cname">Company name</label>
+	        <input class="form-control" type="text"  id="cname" name="cname" placeholder="Company name" >
+
+		</div>
+	    <div class="form-group">
+			<label for="bcode">batch code</label>
+	        <input type="text"  class="form-control" id="bcode" name="bcode" placeholder="Batch code">
+		</div>
+		<div class="form-group">
+			<label for="mdes">Medicine description</label>
+	        <input type="text"  class="form-control" id="mdes" name="mdes" placeholder="Medicine description">
+		</div>
+		<div class="form-group">
+			<label for="stock">stock</label>
+	        <input type="text"  class="form-control" id="stock" name="stock" placeholder="stock">
+		</div>
+		<div class="form-group">
+			<label for="amt">Amount</label>
+	        <input type="text"  class="form-control" id="amt" name="amt" placeholder="Amount">
+		</div>
+
+
+
+	    <button type="submit" class="btn btn-info" id="bt" name="bt">Register</button>
+        <button type="reset" class="btn btn-info" id="rt" name="rt">Reset</button>
+	    </table>
+    </form>
+	{{msg}}
+	</div>
+</center>
+{% endblock %}

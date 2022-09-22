@@ -1,0 +1,40 @@
+{% extends 'myapp/farmer_base.html' %}
+{% load static %}
+{% block title%}Sales Report{%endblock%}
+{% block body %}
+<center>
+    <h1>Sales Report</h1>
+    <div class="container">
+    <form name="frm" role="form" action="{% url 'farmer_batch_sales_add'%}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="company_id">Company</label>
+            <select class="form-control" id="company_id"  name="company_id">
+		        {% for  c in company_list%}
+                <option value="{{c.user_id}}">{{c.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="total_count">Total Count:</label>
+            <input class="form-control" type="text" name="total_count" id="total_count" required>
+        </div>
+        <div class="form-group">
+            <label for="total_weight">Total Weight:</label>
+            <input class="form-control" type="text" name="total_weight" id="total_weight" >
+        </div>
+        <div class="form-group">
+            <label for="price">Price Per KG:</label>
+            <input class="form-control" type="text" name="price" id="price" >
+        </div>
+
+        <button type="submit"
+        class="btn btn-info" id="bt" name="bt">Add</button>
+        <button type="reset"
+        class="btn btn-info" id="rt" name="rt">Reset</button>
+    </form>
+    </div>
+    <h3>{{msg}}</h3>
+</center>
+{% endblock %}

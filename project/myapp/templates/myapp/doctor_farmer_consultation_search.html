@@ -1,0 +1,23 @@
+{% extends 'myapp/doctor_base.html' %}
+{% load static %}
+{%block title%}Reply{%endblock%}
+{% block body %}
+<center>
+    <h3>Search</h3>
+    <div class="container">
+    <form name="frm" role="form" action="{% url 'doctor_farmer_consultation_search'%}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="query">Farmer Name:</label>
+            <input class="form-control" type="text" name="query" id="query" required>
+        </div>
+
+        <button type="submit"
+        class="btn btn-info" id="bt" name="bt">Search</button>
+        <button type="reset"
+        class="btn btn-info" id="rt" name="rt">Reset</button>
+    </form>
+    </div>
+    <h3>{{msg}}</h3>
+</center>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'myapp/admin_base.html' %}
+{% load static %}
+{% block title %}doctor Update{% endblock %}
+{% block body %}
+<center>
+    <h2> Doctor  Update </h2>
+	<div class="container">
+    <form role="form" name="frm" action="{% url 'admin_doctor_edit' %}" method="post">
+        {% csrf_token %}
+		<input type="hidden" name="user_id" value="{{user_id}}">
+        <div class="form-group">
+            <label for="f_name">First name</label>
+            <input class="form-control" type="text"  name="f_name"
+                   value="{{d_obj.f_name}}" required="required" id="f_name">
+        </div>
+        <div class="form-group">
+            <label for="l_name">last name</label>
+            <input class="form-control" type="text"  name="l_name"
+                   value="{{d_obj.l_name}}" required="required" id="l_name">
+        </div>
+        <div class="form-group">
+            <label for="gender">Gender</label>
+            <input class="form-control" type="text"  name="gender"
+                   value="{{d_obj.gender}}" required="required" id="gender">
+        </div>
+        <div class="form-group">
+            <label for="dob">DOB</label>
+            <input class="form-control" type="text"  name="dob"
+                   value="{{d_obj.dob}}" required="required" id="dob">
+        </div>
+        <div class="form-group">
+            <label for="addr">Address</label>
+            <input class="form-control" type="text"  name="addr"
+                   value="{{d_obj.address}}" required="required" id="addr">
+        </div>
+        <div class="form-group">
+            <label for="pin">Pin</label>
+            <input class="form-control" type="text"  name="pin"
+                   value="{{d_obj.pin}}" required="required" id="pin">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input class="form-control" type="text"  name="email"
+                   value="{{d_obj.email}}" required="required" id="email">
+        </div>
+        <div class="form-group">
+            <label for="contact">contact</label>
+            <input class="form-control" type="text"  name="contact"
+                   value="{{d_obj.contact}}" required="required" id="contact">
+        </div>
+		<br><br>
+		<button type="submit" class="btn btn-success" id="bt" name="bt">Update</button>
+        <button type="reset" class="btn btn-warning" id="rt" name="rt">Reset</button>
+    </form>
+	{{msg}}
+	</div>
+</center>
+{% endblock %}

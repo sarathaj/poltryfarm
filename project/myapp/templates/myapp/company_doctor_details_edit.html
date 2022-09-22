@@ -1,0 +1,83 @@
+{% extends 'myapp/company_base.html' %}
+{% load static %}
+{% block title %}doctor Update{% endblock %}
+{% block body %}
+<center>
+    <h2> Doctor  Update </h2>
+	<div class="container">
+    <form role="form" name="frm" action="{% url 'company_doctor_details_edit' %}" method="post">
+        {% csrf_token %}
+		<input type="hidden" name="doctor_id" value="{{doctor_id}}">
+        <div class="form-group">
+            <label for="f_name">First name</label>
+            <input class="form-control" type="text"  name="f_name"
+                   value="{{d_obj.f_name}}" required="required" id="f_name">
+        </div>
+        <div class="form-group">
+            <label for="l_name">last name</label>
+            <input class="form-control" type="text"  name="l_name"
+                   value="{{d_obj.l_name}}" required="required" id="l_name">
+        </div>
+        {%if d_obj.gender == 'Male'%}
+
+        <div class="form-group">
+            <label>Gender :</label>
+			<div class="custom-control custom-radio custom-control-inline">
+  				<input type="radio" class="custom-control-input" id="gender1" name="gender" value="Male" checked>
+  				<label class="custom-control-label" for="gender1">Male</label>
+			</div>
+			<div class="custom-control custom-radio custom-control-inline">
+  				<input type="radio" class="custom-control-input" id="gender2" name="gender" value="Female">
+  				<label class="custom-control-label" for="gender2">Female</label>
+			</div>
+		</div>
+
+        {%else%}
+
+        <div class="form-group">
+            <label>Gender :</label>
+			<div class="custom-control custom-radio custom-control-inline">
+  				<input type="radio" class="custom-control-input" id="gender3" name="gender" value="Male" >
+  				<label class="custom-control-label" for="gender1">Male</label>
+			</div>
+			<div class="custom-control custom-radio custom-control-inline">
+  				<input type="radio" class="custom-control-input" id="gender4" name="gender" value="Female" checked>
+  				<label class="custom-control-label" for="gender2">Female</label>
+			</div>
+		</div>
+
+
+        {%endif%}
+        <div class="form-group">
+            <label for="dob">DOB</label>
+            <input class="form-control" type="date"  name="dob"
+                   value="{{d_obj.dob}}" required="required" id="dob">
+        </div>
+        <div class="form-group">
+            <label for="addr">Address</label>
+            <input class="form-control" type="text"  name="addr"
+                   value="{{d_obj.address}}" required="required" id="addr">
+        </div>
+        <div class="form-group">
+            <label for="pin">Pin</label>
+            <input class="form-control" type="text"  name="pin"
+                   value="{{d_obj.pin}}" required="required" id="pin">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input class="form-control" type="text"  name="email"
+                   value="{{d_obj.email}}" required="required" id="email">
+        </div>
+        <div class="form-group">
+            <label for="contact">contact</label>
+            <input class="form-control" type="text"  name="contact"
+                   value="{{d_obj.contact}}" required="required" id="contact">
+        </div>
+		<br><br>
+		<button type="submit" class="btn btn-success" id="bt" name="bt">Update</button>
+        <button type="reset" class="btn btn-warning" id="rt" name="rt">Reset</button>
+    </form>
+	{{msg}}
+	</div>
+</center>
+{% endblock %}

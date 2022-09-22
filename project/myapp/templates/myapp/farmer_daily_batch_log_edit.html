@@ -1,0 +1,27 @@
+{% extends 'myapp/farmer_base.html' %}
+{% load static %}
+{% block title %}Batch Log Edit{%endblock%}
+{% block body %}
+<center>
+    <h1>Batch Log Edit</h1>
+    <div class="container">
+    <form name="frm" role="form" action="{% url 'farmer_daily_batch_log_edit'%}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="avg_weight">Avg Weight:</label>
+            <input class="form-control" type="text" name="avg_weight" id="avg_weight" value="{{dbl.avg_weight}}" required>
+        </div>
+        <div class="form-group">
+            <label for="total_death">Total Death:</label>
+            <input class="form-control" type="text" name="total_death" id="total_death" value="{{dbl.total_death}}" required>
+        </div>
+        <input name="batch_id" value="{{batch_id}}" type="hidden">
+        <button type="submit"
+        class="btn btn-info" id="bt" name="bt">Add</button>
+        <button type="reset"
+        class="btn btn-info" id="rt" name="rt">Reset</button>
+    </form>
+    </div>
+    <h3>{{msg}}</h3>
+</center>
+{% endblock %}

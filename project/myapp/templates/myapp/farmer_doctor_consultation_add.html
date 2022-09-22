@@ -1,0 +1,23 @@
+{% extends 'myapp/farmer_base.html' %}
+{% load static %}
+{% block title %}Feed Log Entry{%endblock%}
+{% block body %}
+<center>
+    <h1>Feed Log Entry</h1>
+    <div class="container">
+    <form name="frm" role="form" action="{% url 'farmer_doctor_consultation_add'%}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="query">Query:</label>
+            <input class="form-control" type="text" name="query" id="query" required>
+        </div>
+        <input name="batch_id" value="{{batch_id}}" type="hidden">
+        <button type="submit"
+        class="btn btn-info" id="bt" name="bt">Add</button>
+        <button type="reset"
+        class="btn btn-info" id="rt" name="rt">Reset</button>
+    </form>
+    </div>
+    <h3>{{msg}}</h3>
+</center>
+{% endblock %}
